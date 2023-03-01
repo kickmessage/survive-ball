@@ -1,0 +1,8 @@
+export { reportGroundOut, reportHomeRun}  from "./scene/handleScore"
+export { onDocumentMouseMove } from "./physics/mouseMove"
+export  { throwBall } from "./physics/throwBall"
+export { forceClick } from "./physics/forceClick"
+export { getRandomColor } from "./utils/getRandomColor"
+export { createClouds } from "./scene/createClouds"
+export { getRandomNumber } from "./utils/getRandomNumber"
+export { shallowCopy } from "./utils/shallowCopy"

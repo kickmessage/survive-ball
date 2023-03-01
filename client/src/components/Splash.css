@@ -1,0 +1,41 @@
+.splash-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+    font-size: 48px;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+button:hover {
+    animation: rainbow 2s linear infinite;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition: all 0.1s ease;
+  box-shadow: 5px 5px #888888;}
+
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
