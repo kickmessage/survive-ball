@@ -1,7 +1,13 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 const rotation = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI/4)
-function Body(texture: any) {
+
+interface Props {
+    texture: THREE.Texture;
+
+}
+
+function Body({texture}: Props) {
     return(
         <mesh position={[0,0.7,0]}>
             <cylinderGeometry args={[0.1, 0.1, 1.5, 32]} />
@@ -16,7 +22,7 @@ function Body(texture: any) {
 //var head = new THREE.Mesh(headGeometry, headMaterial);
 //head.position.y = 2;
 
-function Head(texture: any) {
+function Head({texture}: Props) {
     return(
         <mesh position={[0,2,0]}>
             <sphereGeometry args={[0.5,32,32]}/>
@@ -28,7 +34,7 @@ function Head(texture: any) {
 //var legGeometry = new THREE.CylinderGeometry(0.1, 0.1, 1.5, 32);
 //var legMaterial = new THREE.MeshPhongMaterial({ map: texture});
 //var leftLeg = new THREE.Mesh(legGeometry, legMaterial);
-function LeftLeg(texture: any) {
+function LeftLeg({texture}: Props) {
     return(
         <mesh position={[-0.25, -0.75, 0]}>
             <cylinderGeometry args={[0.1, 0.1, 1.5, 32]} />
@@ -41,7 +47,7 @@ function LeftLeg(texture: any) {
 
 
 //var rightLeg = new THREE.Mesh(legGeometry, legMaterial);
-function RightLeg(texture: any) {
+function RightLeg({texture}: Props) {
     return(
         <mesh position={[0.25, -0.75, 0]}>
             <cylinderGeometry args={[0.1,0.1,1.5,32]} />
@@ -57,7 +63,7 @@ function RightLeg(texture: any) {
 //var armMaterial = new THREE.MeshPhongMaterial({ map: texture});
 //var leftArm = new THREE.Mesh(armGeometry, armMaterial);
 //var rightArm = new THREE.Mesh(armGeometry, armMaterial);
-function LeftArm(texture: any) {
+function LeftArm({texture}: Props) {
     return(
         <mesh position={[-0.5,1,0]}>
             <cylinderGeometry args={[0.1,0.1, 0.75, 32]} />
@@ -66,7 +72,7 @@ function LeftArm(texture: any) {
     )
 }
 
-function RightArm(texture: any) {
+function RightArm({texture}: Props) {
     return(
         <mesh position={[0.5,1,0]}>
             <cylinderGeometry args={[0.1, 0.1, 0.75, 32]} />
@@ -76,7 +82,9 @@ function RightArm(texture: any) {
 }
 //leftArm.position.set(-0.5, 1, 0);
 //rightArm.position.set(0.5, 1, 0);
-export default function Person() {
+//
+
+export default function Person({texture}: Props) {
     const ref = useRef<THREE.Group>(null!);
     useEffect(()=> {
 
@@ -85,12 +93,12 @@ export default function Person() {
     })
     return(
         <group scale={[30,30,30]} ref={ref} position={[0,50,0]}>
-            <Body />
-            <Head />
-            <LeftLeg />
-            <RightLeg />
-            <LeftArm />
-            <RightArm />
+            <Body texture={texture}/>
+            <Head texture={texture}/>
+            <LeftLeg texture={texture}/>
+            <RightLeg texture={texture}/>
+            <LeftArm texture={texture}/>
+            <RightArm texture={texture}/>
         </group>
     )
 }

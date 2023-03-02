@@ -54,7 +54,7 @@ function AmbientLight() {
 //ballSpotLight.position.set(ballSpotLightPosition.x, ballSpotLightPosition.y, ballSpotLightPosition.z);
 //
 
-function spotLight() {
+function Spotlight() {
     return(
         <spotLight color="white" intensity={0.5} angle={Math.PI} castShadow={true} position={[ballSpotLightPosition.x, ballSpotLightPosition.y, ballSpotLightPosition.z]} />
     )
@@ -217,4 +217,4 @@ function spotLight() {
 
 
 
-export { camera, AmbientLight, spotLight,  cameraPosition }
+export { camera, AmbientLight, Spotlight,  cameraPosition }

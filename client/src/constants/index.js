@@ -1,4 +1,4 @@
 
-export { camera, AmbientLight, spotLight, cameraPosition } from "./scene"
+export { camera, AmbientLight, Spotlight, cameraPosition } from "./scene"
 
 

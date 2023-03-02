@@ -27,7 +27,7 @@ function RightBuntWall() {
     return(
         <mesh ref={ref}>
 
-            <planeGeometry args={[0,25,500]}/>
+            <planeGeometry args={[1000, 50]}/>
             <meshPhongMaterial color="grey" side={THREE.DoubleSide}/>
 
         </mesh>

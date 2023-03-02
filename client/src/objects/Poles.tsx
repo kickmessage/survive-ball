@@ -4,7 +4,7 @@ import { useCylinder } from "@react-three/cannon";
 function LeftPole() {
     
     const [ref] = useCylinder<THREE.Mesh>(() => ({
-        position: [500,-500,1000],
+        position: [500,1000,-500],
     }));
     
     return(
@@ -21,7 +21,7 @@ function LeftPole() {
 
 function RightPole() {
 
-    const [ref] = useCylinder<THREE.Mesh>(()=> ({position: [-500,500,1000]}));
+    const [ref] = useCylinder<THREE.Mesh>(()=> ({position: [-500,1000,500]}));
 
     return(
         <mesh ref={ref}>
