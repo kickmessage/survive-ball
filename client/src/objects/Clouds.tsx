@@ -94,7 +94,7 @@ export default function Clouds() {
 
 
     return(
-        <group>
+        <group name='clouds'>
             <group ref={leftRef}>
                 {clouds}
             </group>

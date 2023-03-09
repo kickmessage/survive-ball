@@ -1,46 +1,32 @@
-import { createContext, useContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
-type StateType = {
-    isBallPitched: boolean;
-    isBallClicked: boolean;
-    isPlayComplete: boolean;
-    isBatEnabled: boolean;
+type GameContextType = {
+  isBallPitched: boolean;
+  isBallClicked: boolean;
+  isPlayComplete: boolean;
+  isBatEnabled: boolean;
 };
 
-type ContextType = {
-    state: StateType;
-    setState: React.Dispatch<React.SetStateAction<StateType>>;
+const defaultGameContext: GameContextType = {
+  isBallPitched: false,
+  isBallClicked: false,
+  isPlayComplete: false,
+  isBatEnabled: true,
 };
 
-const defaultState: StateType = {
-    isBallPitched: false,
-    isBallClicked: false,
-    isPlayComplete: false,
-    isBatEnabled: true,
-};
-
-const StateContext = createContext<ContextType>({
-    state: defaultState,
-    setState: () => {},
+const GameContext = createContext<{ gameState: GameContextType; setGameState: React.Dispatch<React.SetStateAction<GameContextType>> }>({
+  gameState: defaultGameContext,
+  setGameState: () => {},
 });
 
-const useStateContext = () => useContext(StateContext);
+const GameContextProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const [gameState, setGameState] = useState<GameContextType>(defaultGameContext);
 
-interface StateProviderProps {
-    children: React.ReactNode;
-}
-
-const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
-    const [state, setState] = useState<StateType>(defaultState);
-
-    return (
-        <>
-            <StateContext.Provider value={{ state, setState }}>
-                {children}
-            </StateContext.Provider>
-        </>
-    );
+  return (
+    <GameContext.Provider value={{ gameState, setGameState }}>
+      {children}
+    </GameContext.Provider>
+  );
 };
 
-export { defaultState, StateProvider, useStateContext };
-
+export { GameContext, GameContextProvider}

@@ -35,7 +35,7 @@ export function HomeRunText(props: Props) {
         //in this case, I should be able to conditionally render the texts within
         //the parent component, so conditional transparency is not needed
         //but commenting out just in case I need it later
-        <mesh ref={ref}>
+        <mesh ref={ref} name='home-run-text'>
             <Text3D
                 font={FONT_URL}
                 size={50}
@@ -75,7 +75,7 @@ export function OutText(props: Props) {
     })
 
     return(
-        <mesh ref={ref}>
+        <mesh ref={ref} name='out-text'>
             <Text3D
                 font={FONT_URL}
                 size={50}

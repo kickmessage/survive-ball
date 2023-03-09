@@ -36,7 +36,7 @@ function RightPole() {
 
 export default function Poles() {
     return(
-        <group>
+        <group name='poles'>
             <LeftPole />
             <RightPole />
 

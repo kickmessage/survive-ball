@@ -3,13 +3,12 @@ import { usePlane} from "@react-three/cannon";
 
 export default function Ground() {
 
-    let rotation = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI/2);
-    const [ref ] = usePlane<THREE.Mesh>(()=> ({mass: 0,rotation: [Math.PI/2, 0,0]}));
+    const [ref ] = usePlane<THREE.Mesh>(()=> ({mass: 0,rotation: [-Math.PI/2, 0,0], type: "Static"}));
 
     return(
-        <mesh ref={ref}>
+        <mesh ref={ref} name='ground'>
             <planeGeometry args={[1000,1000]}  />
-            <meshStandardMaterial side={THREE.DoubleSide} color='darkgrey'/>
+            <meshStandardMaterial  color='darkgrey'/>
 
         </mesh>
     )

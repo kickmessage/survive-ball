@@ -2,9 +2,9 @@ import * as THREE from "three";
 
 function LeftWallBuntDetection() {
     return(
-        <mesh position={[0,0,1000]} rotation={[Math.PI/2,0,0]}>
+        <mesh position={[0,0,1000]} rotation={[-Math.PI/2,0,0]}>
             <planeGeometry args={[1000,1000]} />
-            <meshStandardMaterial side={THREE.DoubleSide} color="ForestGreen"/>
+            <meshStandardMaterial color="ForestGreen"/>
 
         </mesh>
     )
@@ -22,9 +22,9 @@ function LeftWallBuntDetection() {
 
 function RightWallBuntDetection() {
     return(
-        <mesh position={[1000,0,0]} rotation={[Math.PI/2,0,0]}>
+        <mesh position={[1000,0,0]} rotation={[-Math.PI/2,0,0]}>
             <planeGeometry args={[1000,1000]} />
-            <meshStandardMaterial side={THREE.DoubleSide} color="ForestGreen" />
+            <meshStandardMaterial  color="ForestGreen" />
 
         </mesh>
 

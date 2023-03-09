@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {useThree } from "@react-three/fiber"
 import { useRef, useEffect } from "react";
+import { ringPosition } from "../constants"
 
 const rotation = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI/4)
 export default function Ring() {
@@ -37,7 +38,7 @@ export default function Ring() {
     }, [])
 
     return(
-        <mesh position={[camera.position.x - 50, camera.position.y - 8, camera.position.z -50]} scale={[100,100,0]} ref={ringRef}>
+        <mesh position={[ringPosition.x, ringPosition.y, ringPosition.z]} scale={[100,100,0]} ref={ringRef} name='ring'>
             <extrudeGeometry args={[squareShape, extrudeSettings]} />
             <meshPhongMaterial color="black" transparent={true} opacity={0.5} />
         </mesh>

@@ -92,7 +92,7 @@ export default function Person({texture}: Props) {
 
     })
     return(
-        <group scale={[30,30,30]} ref={ref} position={[0,50,0]}>
+        <group scale={[30,30,30]} ref={ref} position={[0,50,0]} name='person'>
             <Body texture={texture}/>
             <Head texture={texture}/>
             <LeftLeg texture={texture}/>

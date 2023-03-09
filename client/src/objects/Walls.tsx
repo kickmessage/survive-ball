@@ -1,13 +1,18 @@
-import { usePlane } from "@react-three/cannon";
+import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 
 function LeftWall() {
+    const args: [x: number, y: number, z: number] = [1000,500,100]
 
-    const [ref ] = usePlane<THREE.Mesh>(() => ({position: [0, 250, -500],}));
+    const [ref ] = useBox<THREE.Mesh>(() => ({
+        args: args,
+        mass: 0,
+        position: [0, 250, -500],
+        type: "Static"}));
     return(
         <mesh ref={ref}>
-            <planeGeometry args={[1000,500]} />
-            <meshPhongMaterial side={THREE.DoubleSide} color="brown" />
+            <boxGeometry args={args} />
+            <meshPhongMaterial  color="brown" />
         </mesh>)
 
 
@@ -16,16 +21,20 @@ function LeftWall() {
 }
 
 function RightWall() {
+    const args: [x: number, y: number, z: number] = [1000,500,100]
 
-    const [ref] = usePlane<THREE.Mesh>(()=> ({
+    const [ref] = useBox<THREE.Mesh>(()=> ({
+        args: args,
+        mass: 0,
         position: [-500,250,0],
         rotation: [0, Math.PI/2, 0],
+        type: "Static"
     }))
 
     return(
         <mesh ref={ref}>
-            <planeGeometry args={[1000,500]}/>
-            <meshPhongMaterial side={THREE.DoubleSide} color="brown" />
+            <boxGeometry args={args}/>
+            <meshPhongMaterial  color="brown" />
         </mesh>
     )
 }
@@ -34,7 +43,7 @@ function RightWall() {
 export default function Walls() {
 
     return(
-        <group>
+        <group name='walls'>
             <LeftWall/>
             <RightWall/>
         </group>

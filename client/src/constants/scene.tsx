@@ -29,10 +29,19 @@ const cameraPosition = {
     z: 450
 }
 
+const ringPosition = {
+    x: 400,
+    y: 92,
+    z: 400
+
+
+}
+
 
 const camera = new THREE.PerspectiveCamera(120, sizes.x*2 / (sizes.y*3), 0.1, 10000);
 
 camera.position.set(cameraPosition.x,cameraPosition.y,cameraPosition.z)
+camera.lookAt(0,40,0)
 
 
 
@@ -217,4 +226,4 @@ function Spotlight() {
 
 
 
-export { camera, AmbientLight, Spotlight,  cameraPosition }
+export { camera, AmbientLight, Spotlight,  cameraPosition, ringPosition }

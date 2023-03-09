@@ -13,8 +13,9 @@ import Walls from "./Walls"
 import  BuntDetectionWalls  from "./RaycasterDetection/BuntDetectionWalls";
 import  HomeRunDetectionWalls  from "./RaycasterDetection/HomeRunDetectionWalls";
 import Mound from "./Mound"
+import ThrowButton from "./ThrowButton"
 
 
 
-export { Ball, BuntWalls, Clouds, Cursor, CursorDetectionPlane, Ground, HomeRunText, OutText, Person, Ring, Streak, Walls, Poles, BuntDetectionWalls, HomeRunDetectionWalls, Mound};
+export { Ball, BuntWalls, Clouds, Cursor, CursorDetectionPlane, Ground, HomeRunText, OutText, Person, Ring, Streak, Walls, Poles, BuntDetectionWalls, HomeRunDetectionWalls, Mound, ThrowButton};
 

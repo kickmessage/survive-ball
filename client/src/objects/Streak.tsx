@@ -8,7 +8,7 @@ export default function Streak(props: Props) {
 
 
     return(
-        <mesh>
+        <mesh name='streak'>
             <Line
                 color="white"
                 lineWidth={10}
