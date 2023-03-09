@@ -56,14 +56,11 @@ export default function useBall() {
         const mouse = new THREE.Vector2();
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-        console.log('mouse coord', mouse)
 
         raycaster.setFromCamera(mouse, camera);
         const intersections = raycaster.intersectObject(ballObject);
-        console.log ('intersect verification...', '\nballObjectPosition: ', ballObject.position, '\nball position ref value: ', ballPosition)
         if (intersections.length > 0 && !isBallClicked && isBallPitched && isBatEnabled) {
             let forcePoint = intersections[0].point;
-            console.log(' force point: ', forcePoint)
             let originVector = new CANNON.Vec3(0,0,0);
             let forceVector = new CANNON.Vec3(forcePoint.x - ballPosition[0], forcePoint.y-ballPosition[1], forcePoint.z-ballPosition[2]);
             forceVector = originVector.vsub(forceVector)

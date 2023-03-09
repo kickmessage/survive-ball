@@ -1,7 +1,6 @@
 ## task list 
 
 ### (first-priority/to-do)
-- make camera look at ball after being hit
 - bunt detection
 - home run detection
 - proper text display on out/home run
