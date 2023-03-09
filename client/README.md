@@ -8,6 +8,9 @@
 - lives tracking within state
 - scene reset instead of window reload after round completion
 
+### (bugs)
+- if user spams click during countdown additional numbers will continue to pop up inside the 'ring'
+
 ### (secondary-priority/to-do-after-first-priority)
 - leaderboard submission prompt after run is completed
 - code cleanup (@dev, @todo)
