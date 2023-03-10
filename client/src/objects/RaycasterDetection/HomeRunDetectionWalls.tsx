@@ -27,7 +27,9 @@ function RightWallHomeRunDetection() {
 
 export default function HomeRunDetectionWalls() {
     return(
-        <group>
+        <group
+            name = 'home-run-detection-walls'
+        >
             <LeftWallHomeRunDetection />
             <RightWallHomeRunDetection />
         </group>

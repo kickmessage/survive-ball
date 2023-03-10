@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useSphere } from "@react-three/cannon";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useBall } from "../hooks"
+import { useBall, useScoreDetection } from "../hooks"
 import { useGameStore } from "../state"
 import {  useEffect, useRef } from "react";
 
@@ -17,7 +17,9 @@ export default function Ball({texture }: Props) {
         x: 50, y: 100, z: 0
     }
 
+
     const ballPosRef = useRef<any>([ballPosition.x, ballPosition.y, ballPosition.z])
+    const { detectHomeRun, detectBunt } = useScoreDetection();
 
 
 
@@ -57,6 +59,8 @@ export default function Ball({texture }: Props) {
             camera.lookAt(ballPosRef.current[0],ballPosRef.current[1], ballPosRef.current[2])
 
         }
+        detectHomeRun(ballPosRef.current);
+        detectBunt(ballPosRef.current);
 
 
     })

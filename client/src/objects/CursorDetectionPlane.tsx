@@ -17,7 +17,7 @@ export default function CursorDetectionPlane() {
             position={[camera.position.x-20, camera.position.y-8, camera.position.z -20]} 
             rotation={[0, Math.PI/4, 0]}
             ref={ref}
-            onPointerMove={(e) => cursor.position.set(e.point.x, e.point.y, e.point.z)}
+            onPointerMove={(e) => {if (cursor) cursor.position.set(e.point.x, e.point.y, e.point.z)}}
             name="cursor-detection-plane"
         >
             <planeGeometry args={[200,200]} />

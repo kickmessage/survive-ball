@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { useScoreDetection } from "../../hooks"
 
 function LeftWallBuntDetection() {
     return(
@@ -39,7 +40,9 @@ function RightWallBuntDetection() {
 
 export default function BuntDetectionWalls() {
     return(
-        <group>
+        <group
+            name='bunt-detection-walls'
+        >
 
             <LeftWallBuntDetection/>
             <RightWallBuntDetection/>

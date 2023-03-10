@@ -45,7 +45,7 @@ function Scene() {
             <Physics
                 gravity={[0,-600, 0]}
                 defaultContactMaterial={{friction: 0.02, restitution: 0.6}}
-                stepSize={1/500}
+                stepSize={1/1500}
                 iterations={3}
                 broadphase="SAP"
             >
@@ -77,8 +77,8 @@ function Scene() {
 
 
 
-            <HomeRunText visible={false}/>
-            <OutText visible={false}/>
+            <HomeRunText />
+            <OutText />
 
             <Person texture={BodyTexture}/>
             <Ring />

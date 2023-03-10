@@ -34,9 +34,9 @@ export default function useBall() {
 
         api.applyImpulse(forceArr, [0,0,0])
 
-        setTimeout(()=> {
-             window.location.reload();
-        }, 3000)
+      //  setTimeout(()=> {
+      //       window.location.reload();
+      //  }, 3000)
 
 
 
@@ -64,7 +64,7 @@ export default function useBall() {
             let originVector = new CANNON.Vec3(0,0,0);
             let forceVector = new CANNON.Vec3(forcePoint.x - ballPosition[0], forcePoint.y-ballPosition[1], forcePoint.z-ballPosition[2]);
             forceVector = originVector.vsub(forceVector)
-            forceVector = forceVector.scale(100)
+            forceVector = forceVector.scale(200)
             let forceArr = [forceVector.x, forceVector.y, forceVector.z];
 
             api.applyImpulse(forceArr, [0,0,0])
