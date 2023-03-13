@@ -3,15 +3,20 @@ import { useSphere } from "@react-three/cannon";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useBall, useScoreDetection } from "../hooks"
 import { useGameStore } from "../state"
-import {  useEffect, useRef } from "react";
+import {  useEffect, useRef, useState } from "react";
 
 interface Props {
     texture: THREE.Texture;
 }
 export default function Ball({texture }: Props) {
     const { camera } = useThree();
-    const isBallPitched = useGameStore((state:any) => state.isBallPitched)
-    const isBallClicked = useGameStore((state:any) => state.isBallClicked)
+    const isBallClicked = useGameStore((s: any) => s.isBallClicked);
+    const isBallPitched = useGameStore((s: any) => s.isBallPitched);
+    const updateIsBallPitched = useGameStore((s: any) => s.updateIsBallPitched);
+    const isBatEnabled = useGameStore((s: any) => s.isBatEnabled);
+    const updateIsBallClicked = useGameStore((s:any) => s.updateIsBallClicked);
+    const state = useGameStore((state:any) => state);
+    const isPlayStarted = useGameStore((state:any) => state.isPlayStarted);
     const args: [x: number, y: number, z: number] = [20,30,30]
     const ballPosition = {
         x: 50, y: 100, z: 0
@@ -27,9 +32,10 @@ export default function Ball({texture }: Props) {
         if (isBallPitched) {
 
             api.mass.set(1);
+            console.log('blah')
             throwBall(api)
         }
-
+        
 
 
     }, [isBallPitched])
@@ -39,8 +45,41 @@ export default function Ball({texture }: Props) {
 
 
 
+
     const [ref, api ] = useSphere<THREE.Mesh>(()=>({args: [args[0]], mass: 0, position:[ballPosition.x,ballPosition.y, ballPosition.z], type: "Dynamic"}  ));
-    const { throwBall, hitBall } = useBall();
+    const { throwBall, hitBall } = useBall(
+        {
+            isBallClicked: isBallClicked,
+            isBallPitched: isBallPitched,
+            updateIsBallPitched: updateIsBallPitched,
+            isBatEnabled: isBatEnabled,
+            updateIsBallClicked: updateIsBallClicked,
+            state: state 
+        }
+
+    );
+
+    const [currentState, setCurrentState] = useState();
+    useEffect(()=> {
+        setCurrentState(state)
+
+    }, [])
+    useEffect(()=> {
+
+      //  console.log('state change...',)
+      //  console.log('prev state:', currentState);
+      //  console.log('new state: ', state)
+        console.log('-----------------state changes: ');
+        for (const key in state) {
+            if (currentState && currentState[key] !== state[key]) {
+                console.log(key, ':', state[key]);
+
+            }
+        }
+        console.log('-------------------end of state changes')
+        setCurrentState(state)
+    }, [state])
+
 
     useEffect(() => {
         const unsubscribe = api.position.subscribe((p) => (ballPosRef.current = p));
@@ -57,6 +96,15 @@ export default function Ball({texture }: Props) {
 
         if (isBallClicked) {
             camera.lookAt(ballPosRef.current[0],ballPosRef.current[1], ballPosRef.current[2])
+
+        }
+
+        if (!isPlayStarted) {
+            api.position.set(ballPosition.x, ballPosition.y, ballPosition.z)
+            api.velocity.set(0,0,0);
+            api.mass.set(0);
+            camera.lookAt(0,40,0)
+
 
         }
         detectHomeRun(ballPosRef.current);

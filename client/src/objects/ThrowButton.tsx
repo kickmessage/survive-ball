@@ -184,7 +184,9 @@ export default function ThrowButton() {
     })[0]
 
     const isBallPitched = useGameStore((state: any) => state.isBallPitched);
-    const updateBallPitch = useGameStore((state: any) => state.updateBallPitch)
+    const updateIsBallPitched = useGameStore((state: any) => state.updateIsBallPitched)
+    const updateIsPlayStarted = useGameStore((state:any) => state.updateIsPlayStarted);
+    const isPlayStarted = useGameStore((state:any) => state.isPlayStarted);
 
 
     const [ballPitchState, setBallPitchState] = useState(isBallPitched);
@@ -195,9 +197,22 @@ export default function ThrowButton() {
 
     }, [isBallPitched])
 
+    useEffect(()=> {
+        if (!isPlayStarted) {
+            setBackgroundOpacity(0.7);
+            setThreeTextOpacity(0);
+            setTwoTextOpacity(0);
+            setOneTextOpacity(0);
+        }
+
+
+    }, [isPlayStarted])
+
 
 
     function handleClick() {
+        updateIsPlayStarted(true);
+    
         if (!ballPitchState) {
 
             setBackgroundOpacity(0); 
@@ -224,7 +239,7 @@ export default function ThrowButton() {
 
             }, 999);
             setTimeout(()=> {
-                updateBallPitch(true);
+                updateIsBallPitched(true);
 
 
 
@@ -247,7 +262,7 @@ export default function ThrowButton() {
 
     function handleMove(e: any) {
 
-        if (!isBallPitched) {
+        if (!isBallPitched && cursor) {
 
             cursor.position.set(e.point.x, e.point.y, e.point.z)
 

@@ -8,6 +8,7 @@ import { Ball, BuntWalls, Clouds, Cursor, CursorDetectionPlane, Ground, Poles, H
 import { camera, AmbientLight, Spotlight} from "../constants"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useGameStore } from "../state"
+import HUD  from "./HUD";
 import "./Home.css"
 
 
@@ -38,7 +39,7 @@ function Scene() {
 
     return(
         <>
-
+            <CameraController/>
             <AmbientLight/>
             <Spotlight />
 
@@ -148,6 +149,7 @@ export default function Home() {
                 {/* @dev background isn't changing will figure out later */}
                 {/*   <texture attach="background" args={{SkyTexture}}/>*/}
                 <Scene/>
+                <HUD/>
 
 
 

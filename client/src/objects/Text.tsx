@@ -8,6 +8,7 @@ import { useFrame } from "@react-three/fiber";
 
 export function HomeRunText() {
     const isPlayComplete = useGameStore((state: any) => state.isPlayComplete);
+    const isPlayStarted = useGameStore((state:any) => state.isPlayStarted);
     const scoreResult = useGameStore((state: any) => state.scoreResult);
     const [isVisible, setIsVisible] = useState(false);
     //       const homeRunTextMaterial= new THREE.MeshPhongMaterial({transparent: true, opacity: 0, color: 'lime'});
@@ -28,7 +29,17 @@ export function HomeRunText() {
 
 
     }, [isPlayComplete, scoreResult])
+    useEffect(() => {
+        if (ref && !isPlayStarted) {
+            setIsVisible(false)
+            ref.current.rotation.x = 0;
+            ref.current.rotation.y = 0;
+            ref.current.rotation.z = 0;
+        }
+    }, [isPlayStarted])
 
+
+    
     useFrame(() => {
         if (isPlayComplete) {
             ref.current.rotation.x += 0.001
@@ -101,12 +112,13 @@ export function HomeRunText() {
 
 export function OutText() {
     const isPlayComplete = useGameStore((state: any) => state.isPlayComplete);
+    const isPlayStarted = useGameStore((state:any) => state.isPlayStarted);
     const scoreResult = useGameStore((state: any) => state.scoreResult);
     const [isVisible, setIsVisible] = useState(false);
 
 
     //        const outText = new THREE.Mesh(outTextGeometry, outTextMaterial)
-    //        outText.rotateOnAxis(new THREE.Vector3(0, 1,0), Math.PI/4)
+    //        outText.rotateOnAxis(new THREE.Vector3(0, 1,0), MathPI/4)
     //        outText.position.z += 50;
     //        outText.position.x -= 90;
     const ref = useRef<THREE.Mesh>(null!);
@@ -118,6 +130,15 @@ export function OutText() {
         }
 
     }, [isPlayComplete, scoreResult])
+    useEffect(() => {
+        if (ref && !isPlayStarted) {
+            setIsVisible(false)
+            ref.current.rotation.x = 0;
+            ref.current.rotation.y = 0;
+            ref.current.rotation.z = 0;
+        }
+    }, [isPlayStarted])
+
     useFrame(() => {
         if (isPlayComplete) {
             ref.current.rotation.x += 0.001

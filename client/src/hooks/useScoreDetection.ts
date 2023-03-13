@@ -4,12 +4,13 @@ import * as THREE from "three";
 
 export default function useScoreDetection() { //@todo typing
     const isPlayComplete = useGameStore((state: any) => state.isPlayComplete);
-    const updatePlayComplete = useGameStore((state:any) => state.updatePlayComplete);
+    const updateIsPlayComplete = useGameStore((state:any) => state.updateIsPlayComplete);
     const updateScoreResult = useGameStore((state:any) => state.updateScoreResult);
     const totalScore = useGameStore((state:any) => state.totalScore);
     const remainingLives = useGameStore((state:any) => state.remainingLives);
     const updateTotalScore = useGameStore((state: any) => state.updateTotalScore);
     const updateRemainingLives = useGameStore((state:any) => state.updateRemainingLives);
+    const resetPlay = useGameStore((state:any) => state.resetPlay);
     const get = useThree((state) => state.get);
     const homeRunDetectionWalls = get().scene.children.filter((group) => {
         return group.name === 'home-run-detection-walls'
@@ -22,6 +23,14 @@ export default function useScoreDetection() { //@todo typing
 
     })[0]
 
+    const startPlayReset = () => {
+        setTimeout(() => {
+            resetPlay();
+
+        }, 2000)
+
+    }
+
     const detectionRaycaster = new THREE.Raycaster();
     function detectHomeRun(ballPosition: any) {//@TODO typing
         if (homeRunDetectionWalls) {
@@ -31,10 +40,10 @@ export default function useScoreDetection() { //@todo typing
             let homeRunDetection = detectionRaycaster.intersectObjects(homeRunDetectionWalls.children, true);
             if (homeRunDetection.length > 0 && !isPlayComplete) {
                 console.log('home run detected')
-                updatePlayComplete(true);
+                updateIsPlayComplete(true);
                 updateScoreResult('run')
                 updateTotalScore( totalScore+ 1);
-                return true;
+                startPlayReset();
 
             }
 
@@ -49,10 +58,10 @@ export default function useScoreDetection() { //@todo typing
             let buntDetection = detectionRaycaster.intersectObjects(buntDetectionWalls.children, true);
             if (buntDetection.length > 0 && !isPlayComplete) {
                 console.log('bunt detected')
-                updatePlayComplete(true);
+                updateIsPlayComplete(true);
                 updateScoreResult('out')
                 updateRemainingLives(remainingLives-1);
-                return true
+                startPlayReset();
             }
 
 

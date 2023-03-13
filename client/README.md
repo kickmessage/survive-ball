@@ -1,8 +1,18 @@
 ## task list 
 
 ### (first-priority/to-do)
-- scene reset instead of window reload after round completion
+- create HUD for score/lives
+- game over screen
+    - menu including...
+        - restart
+        - y/n submit to leaderboard
+            - username prompt (optional) ==> submit
+                - {{loading}} ==> 'score submitted!' confirmation
+- loading screen during initial render
+- out detection on floor touch
 - draw line streak (impl position update on frame) after ball hit
+- add collision detection to poles
+
 
 ### (bugs)
 - if user spams click during countdown additional numbers will continue to pop up inside the 'ring'

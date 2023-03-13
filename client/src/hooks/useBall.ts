@@ -3,18 +3,22 @@ import * as CANNON from "cannon-es"
 import * as THREE from "three";
 import { useGameStore } from "../state"
 
+type Props = {
+    isBallClicked: boolean;
+    isBallPitched: boolean;
+    isBatEnabled: boolean;
+    updateIsBallClicked: (status:boolean) => void;
+    updateIsBallPitched: (status:boolean) => void;
+    state: any;
+}
 
-export default function useBall() { 
+export default function useBall({isBallClicked, isBallPitched, isBatEnabled, updateIsBallClicked, updateIsBallPitched, state}: Props) { 
     const { camera } = useThree();
     const cameraPosition = camera.position;
     const get = useThree((state: any) => state.get);
 
 
 
-    const isBallClicked = useGameStore((s: any) => s.isBallClicked);
-    const isBallPitched = useGameStore((s: any) => s.isBallPitched);
-    const isBatEnabled = useGameStore((s: any) => s.isBatEnabled);
-    const updateBallClicked = useGameStore((s:any) => s.updateBallClicked);
 
 
 
@@ -29,14 +33,12 @@ export default function useBall() {
         }
 
         let forceVector = new CANNON.Vec3(centerThrow.x + randomNumber(60), centerThrow.y + randomNumber(25), centerThrow.z)
-        forceVector = forceVector.scale(1.5)
+        forceVector = forceVector.scale(2)
         let forceArr = [forceVector.x, forceVector.y, forceVector.z]
 
         api.applyImpulse(forceArr, [0,0,0])
+        updateIsBallPitched(true);
 
-      //  setTimeout(()=> {
-      //       window.location.reload();
-      //  }, 3000)
 
 
 
@@ -68,7 +70,7 @@ export default function useBall() {
             let forceArr = [forceVector.x, forceVector.y, forceVector.z];
 
             api.applyImpulse(forceArr, [0,0,0])
-            updateBallClicked(true);
+            updateIsBallClicked(true);
 
 
 
