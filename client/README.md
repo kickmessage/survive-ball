@@ -1,12 +1,6 @@
 ## task list 
 
 ### (first-priority/to-do)
-- game over screen
-    - menu including...
-        - restart
-        - y/n submit to leaderboard
-            - username prompt (optional) ==> submit
-                - {{loading}} ==> 'score submitted!' confirmation
 - loading screen during initial render
 - out detection on floor touch
 - draw line streak (impl position update on frame) after ball hit
