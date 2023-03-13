@@ -7,8 +7,8 @@ import * as THREE from "three";
 import { Ball, BuntWalls, Clouds, Cursor, CursorDetectionPlane, Ground, Poles, HomeRunText, OutText, Person, Ring, Streak, Walls, BuntDetectionWalls, HomeRunDetectionWalls, Mound, ThrowButton } from "../objects"
 import { camera, AmbientLight, Spotlight} from "../constants"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { useGameStore } from "../state"
 import HUD  from "./HUD";
+import GameOverScreen from "./GameOver";
 import "./Home.css"
 
 
@@ -31,7 +31,6 @@ function CameraController() {
 
 function Scene() {
     const BodyTexture = useLoader(THREE.TextureLoader, t);
-    //const SkyTexture = useLoader(THREE.TextureLoader, sky);
 
 
 
@@ -39,7 +38,6 @@ function Scene() {
 
     return(
         <>
-            <CameraController/>
             <AmbientLight/>
             <Spotlight />
 
@@ -102,38 +100,6 @@ function Scene() {
 
 }
 export default function Home() {
-    //    const { isBallPitched, isBallClicked, isBatEnabled, isPlayComplete } = useGameStore((state:any) => state);
-    //   const stateRef = useRef<any>(useGameStore.getState());
-    //    const updateBallPitch  = useGameStore((state: any) => state.updateBallPitch);
-    //    console.log('boop', stateRef.current)
-    //
-    //    useEffect(() => {
-    //        useGameStore.subscribe(
-    //            state => (stateRef.current = state)
-    //        )
-    //        console.log(stateRef.current)
-    //
-    //
-    //    }, [])
-
-
-
-    // setGameState((prevState) => ({
-    //     ...prevState,
-    //     isBallPitched: true,
-    // }));
-    // console.log("updated game state", gameState);
-    //    useEffect(()=> {
-    //        console.log('initial state', state)
-    //
-    //
-    //    }, [])
-    //
-    //    useEffect(() => {
-    //        console.log('updated state', state);
-    //
-    //
-    //    }, [state])
 
 
     return(
@@ -150,6 +116,7 @@ export default function Home() {
                 {/*   <texture attach="background" args={{SkyTexture}}/>*/}
                 <Scene/>
                 <HUD/>
+                <GameOverScreen/>
 
 
 

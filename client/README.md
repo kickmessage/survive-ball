@@ -24,6 +24,9 @@
 - increase difficulty as rounds go on
 - HUD (lives, score, difficulty(???))
 - type all state pulls (currently set as any for everything)
+- settings menu 
+    - graphics settings
+    - other stuff maybe 
 
 
 ### (wants/maybes)

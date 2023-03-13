@@ -32,7 +32,6 @@ export default function Ball({texture }: Props) {
         if (isBallPitched) {
 
             api.mass.set(1);
-            console.log('blah')
             throwBall(api)
         }
         

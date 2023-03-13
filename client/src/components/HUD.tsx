@@ -55,7 +55,7 @@ export default function HUD() {
                     </mesh>
                 </Center>
                 <Center top right>
-                    <mesh name="HUD-score-text" ref={livesRef}>
+                    <mesh name="HUD-lives-text" ref={livesRef}>
                         <Text3D
                             font={FONT_URL}
                             size={0.15}

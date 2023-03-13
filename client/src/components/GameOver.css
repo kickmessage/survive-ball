@@ -1,0 +1,49 @@
+.game-over-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+    background: black;
+    cursor: pointer;
+    /* 
+     * for some reason 100vh doesn't cover entire screen,
+     * something to do with being overlayed over the react three fiber canvas,
+     * easy fix is to just extend the height by 10vh,
+     * and move everything else up 10vh to keep it centered
+     */
+    height: 110vh; 
+    width: 100vw;
+
+
+}
+
+.game-over-menu-buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    bottom: 10vh;
+    height: 100%;
+    width: 100%;
+
+}
+
+.game-over-menu button {
+
+    font-size: 56px;
+}
+
+.game-over-menu h1 {
+    font-size: 100px;
+    text-decoration: underline;
+}
+
+.game-over-menu button:hover {
+    font-size: 72px;
+    text-decoration: underline;
+    color: black;
+
+}
