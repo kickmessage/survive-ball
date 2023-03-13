@@ -1,7 +1,6 @@
 ## task list 
 
 ### (first-priority/to-do)
-- create HUD for score/lives
 - game over screen
     - menu including...
         - restart
@@ -11,7 +10,6 @@
 - loading screen during initial render
 - out detection on floor touch
 - draw line streak (impl position update on frame) after ball hit
-- add collision detection to poles
 
 
 ### (bugs)
